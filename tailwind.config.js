@@ -9,6 +9,7 @@ module.exports = {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
+  presets: [require("nativewind/preset")],
   theme: {
     container: {
       center: true,

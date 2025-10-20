@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { Plus } from 'lucide-react-native';
@@ -22,47 +22,51 @@ export default function Groups() {
 
   if (isLoading) {
     return (
-      <View style={styles.loadingContainer}>
+      <View className="flex-1 bg-black justify-center items-center">
         <ActivityIndicator size="large" color="#1CC29F" />
       </View>
     );
   }
 
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Groups</Text>
-        <TouchableOpacity style={styles.addButton} onPress={handleCreateGroup}>
+    <SafeAreaView className="flex-1 bg-black" edges={['top']}>
+      <View className="flex-row justify-between items-center px-5 pt-6">
+        <Text className="text-3xl font-bold text-white">Groups</Text>
+        <TouchableOpacity 
+          className="flex-row items-center bg-primary-500 px-4 py-2.5 rounded-2xl gap-1.5"
+          onPress={handleCreateGroup}>
           <Plus size={20} color="#FFFFFF" />
-          <Text style={styles.addButtonText}>Add Group</Text>
+          <Text className="text-white text-sm font-semibold">Add Group</Text>
         </TouchableOpacity>
       </View>
 
       {userMemberGroups.length === 0 ? (
-        <View style={styles.emptyContainer}>
-          <Text style={styles.emptyText}>You are not part of any groups.</Text>
-          <TouchableOpacity style={styles.createButton} onPress={handleCreateGroup}>
-            <Text style={styles.createButtonText}>Create Your First Group</Text>
+        <View className="flex-1 justify-center items-center px-10">
+          <Text className="text-gray-400 text-base mb-6 text-center">You are not part of any groups.</Text>
+          <TouchableOpacity 
+            className="bg-primary-500 px-6 py-3.5 rounded-xl"
+            onPress={handleCreateGroup}>
+            <Text className="text-white text-base font-bold">Create Your First Group</Text>
           </TouchableOpacity>
         </View>
       ) : (
         <FlatList
           data={userMemberGroups}
           keyExtractor={(item: any) => item.$id}
-          contentContainerStyle={styles.listContent}
+          contentContainerStyle={{ padding: 20, paddingTop: 8 }}
           renderItem={({ item }) => (
             <TouchableOpacity
-              style={styles.groupCard}
+              className="flex-row bg-dark-4 rounded-xl p-4 mb-3 items-center"
               onPress={() => handleGroupPress(item.$id)}>
-              <View style={styles.groupIcon}>
+              <View className="w-12 h-12 rounded-full bg-gray-700 justify-center items-center mr-4">
                 <Image
                   source={{ uri: 'https://img.icons8.com/color/48/add-user-group-man-man-skin-type-7.png' }}
-                  style={styles.groupImage}
+                  className="w-8 h-8"
                 />
               </View>
-              <View style={styles.groupInfo}>
-                <Text style={styles.groupName}>{item.groupName || 'Unnamed Group'}</Text>
-                <Text style={styles.groupMembers}>
+              <View className="flex-1">
+                <Text className="text-lg font-semibold text-white mb-1">{item.groupName || 'Unnamed Group'}</Text>
+                <Text className="text-sm text-gray-400">
                   {item.Members?.length || 0} members
                 </Text>
               </View>
@@ -73,103 +77,3 @@ export default function Groups() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-  },
-  loadingContainer: {
-    flex: 1,
-    backgroundColor: '#000',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 20,
-    paddingTop: 24,
-  },
-  headerTitle: {
-    fontSize: 28,
-    fontWeight: 'bold' as const,
-    color: '#FFFFFF',
-  },
-  addButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#1CC29F',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderRadius: 20,
-    gap: 6,
-  },
-  addButtonText: {
-    color: '#FFFFFF',
-    fontSize: 14,
-    fontWeight: '600' as const,
-  },
-  emptyContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 40,
-  },
-  emptyText: {
-    color: '#9CA3AF',
-    fontSize: 16,
-    marginBottom: 24,
-    textAlign: 'center',
-  },
-  createButton: {
-    backgroundColor: '#1CC29F',
-    paddingHorizontal: 24,
-    paddingVertical: 14,
-    borderRadius: 12,
-  },
-  createButtonText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: 'bold' as const,
-  },
-  listContent: {
-    padding: 20,
-    paddingTop: 8,
-  },
-  groupCard: {
-    flexDirection: 'row',
-    backgroundColor: '#1F2937',
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 12,
-    alignItems: 'center',
-  },
-  groupIcon: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: '#374151',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 16,
-  },
-  groupImage: {
-    width: 32,
-    height: 32,
-  },
-  groupInfo: {
-    flex: 1,
-  },
-  groupName: {
-    fontSize: 18,
-    fontWeight: '600' as const,
-    color: '#FFFFFF',
-    marginBottom: 4,
-  },
-  groupMembers: {
-    fontSize: 14,
-    color: '#9CA3AF',
-  },
-});

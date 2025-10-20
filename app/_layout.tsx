@@ -2,6 +2,7 @@ import { Stack } from 'expo-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { StatusBar } from 'expo-status-bar';
 import { AuthProvider } from '@/context/AuthContext';
+import '../global.css';
 
 const queryClient = new QueryClient();
 

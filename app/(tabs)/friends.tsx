@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { UserPlus } from 'lucide-react-native';
@@ -18,44 +18,48 @@ export default function Friends() {
 
   if (isLoading) {
     return (
-      <View style={styles.loadingContainer}>
+      <View className="flex-1 bg-black justify-center items-center">
         <ActivityIndicator size="large" color="#1CC29F" />
       </View>
     );
   }
 
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Friends</Text>
-        <TouchableOpacity style={styles.addButton} onPress={handleAddFriend}>
+    <SafeAreaView className="flex-1 bg-black" edges={['top']}>
+      <View className="flex-row justify-between items-center px-5 pt-6">
+        <Text className="text-3xl font-bold text-white">Friends</Text>
+        <TouchableOpacity 
+          className="flex-row items-center bg-primary-500 px-4 py-2.5 rounded-2xl gap-1.5"
+          onPress={handleAddFriend}>
           <UserPlus size={20} color="#FFFFFF" />
-          <Text style={styles.addButtonText}>Add Friend</Text>
+          <Text className="text-white text-sm font-semibold">Add Friend</Text>
         </TouchableOpacity>
       </View>
 
       {friends.length === 0 ? (
-        <View style={styles.emptyContainer}>
-          <Text style={styles.emptyText}>No friends added yet.</Text>
-          <TouchableOpacity style={styles.createButton} onPress={handleAddFriend}>
-            <Text style={styles.createButtonText}>Add Your First Friend</Text>
+        <View className="flex-1 justify-center items-center px-10">
+          <Text className="text-gray-400 text-base mb-6 text-center">No friends added yet.</Text>
+          <TouchableOpacity 
+            className="bg-primary-500 px-6 py-3.5 rounded-xl"
+            onPress={handleAddFriend}>
+            <Text className="text-white text-base font-bold">Add Your First Friend</Text>
           </TouchableOpacity>
         </View>
       ) : (
         <FlatList
           data={friends}
           keyExtractor={(item: any) => item.$id}
-          contentContainerStyle={styles.listContent}
+          contentContainerStyle={{ padding: 20, paddingTop: 8 }}
           renderItem={({ item }) => (
-            <View style={styles.friendCard}>
-              <View style={styles.friendAvatar}>
-                <Text style={styles.avatarText}>
+            <View className="flex-row bg-dark-4 rounded-xl p-4 mb-3 items-center">
+              <View className="w-12 h-12 rounded-full bg-primary-500 justify-center items-center mr-4">
+                <Text className="text-xl font-bold text-white">
                   {item.name?.charAt(0).toUpperCase() || '?'}
                 </Text>
               </View>
-              <View style={styles.friendInfo}>
-                <Text style={styles.friendName}>{item.name || 'Unknown'}</Text>
-                <Text style={styles.friendEmail}>{item.email || ''}</Text>
+              <View className="flex-1">
+                <Text className="text-lg font-semibold text-white mb-1">{item.name || 'Unknown'}</Text>
+                <Text className="text-sm text-gray-400">{item.email || ''}</Text>
               </View>
             </View>
           )}
@@ -64,104 +68,3 @@ export default function Friends() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-  },
-  loadingContainer: {
-    flex: 1,
-    backgroundColor: '#000',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 20,
-    paddingTop: 24,
-  },
-  headerTitle: {
-    fontSize: 28,
-    fontWeight: 'bold' as const,
-    color: '#FFFFFF',
-  },
-  addButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#1CC29F',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderRadius: 20,
-    gap: 6,
-  },
-  addButtonText: {
-    color: '#FFFFFF',
-    fontSize: 14,
-    fontWeight: '600' as const,
-  },
-  emptyContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 40,
-  },
-  emptyText: {
-    color: '#9CA3AF',
-    fontSize: 16,
-    marginBottom: 24,
-    textAlign: 'center',
-  },
-  createButton: {
-    backgroundColor: '#1CC29F',
-    paddingHorizontal: 24,
-    paddingVertical: 14,
-    borderRadius: 12,
-  },
-  createButtonText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: 'bold' as const,
-  },
-  listContent: {
-    padding: 20,
-    paddingTop: 8,
-  },
-  friendCard: {
-    flexDirection: 'row',
-    backgroundColor: '#1F2937',
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 12,
-    alignItems: 'center',
-  },
-  friendAvatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: '#1CC29F',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 16,
-  },
-  avatarText: {
-    fontSize: 20,
-    fontWeight: 'bold' as const,
-    color: '#FFFFFF',
-  },
-  friendInfo: {
-    flex: 1,
-  },
-  friendName: {
-    fontSize: 18,
-    fontWeight: '600' as const,
-    color: '#FFFFFF',
-    marginBottom: 4,
-  },
-  friendEmail: {
-    fontSize: 14,
-    color: '#9CA3AF',
-  },
-});

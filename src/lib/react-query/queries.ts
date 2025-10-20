@@ -96,17 +96,27 @@ export const useCreateExpense = () => {
   return useMutation({
     mutationFn: (expense: INewExpense) => createExpense(expense),
     onSuccess: (expense) => {
-      queryClient.invalidateQueries([QUERY_KEYS.GET_CURRENT_USER]);
-      queryClient.invalidateQueries([
-        QUERY_KEYS.GET_GROUP_BY_ID,
-        expense?.group,
-      ]);
-      queryClient.invalidateQueries([
-        QUERY_KEYS.GET_USER_GROUPS_BY_ID,
-        user.group,
-      ]);
-      queryClient.invalidateQueries([QUERY_KEYS.GET_GROUPS_BY_ID, user.group]);
-      queryClient.invalidateQueries([QUERY_KEYS.GET_FRIENDS]);
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_CURRENT_USER],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [
+          QUERY_KEYS.GET_GROUP_BY_ID,
+          expense?.group,
+        ],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [
+          QUERY_KEYS.GET_USER_GROUPS_BY_ID,
+          user.group,
+        ],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_GROUPS_BY_ID, user.group],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_FRIENDS],
+      });
     },
   });
 };
