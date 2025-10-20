@@ -1,318 +1,336 @@
-# Welcome to your Rork app
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b44a514e-0a41-4f09-8786-fc529ed51cf9" alt="Splitwise clone Banner"/>
+</p>
 
-## Project info
+---
 
-This is a native cross-platform mobile app created with [Rork](https://rork.com)
+### 🤝 **Looking for Collaborators**
 
-**Platform**: Native iOS & Android app, exportable to web
-**Framework**: Expo Router + React Native
+I’m actively looking for collaborators to help add new features and enhance this project further!
 
-## How can I edit this code?
+If you have ideas, expertise, or just the enthusiasm to contribute, feel free to:
 
-There are several ways of editing your native mobile application.
+- Fork this repository and start contributing.
+- Reach out to me at [p1.sirsat1998@gmail.com](mailto:p1.sirsat1998@gmail.com) to discuss ideas or ask questions.
 
-### **Use Rork**
+✨ **Together, we can make this project even better!** ✨
 
-Simply visit [rork.com](https://rork.com) and prompt to build your app with AI.
+---
 
-Changes made via Rork will be committed automatically to this GitHub repo.
+# **📄 SplitWise Clone Installation Guide**
 
-Whenever you make a change in your local code editor and push it to GitHub, it will be also reflected in Rork.
+### 📚 **Table of Contents**
 
-### **Use your preferred code editor**
+1. [📥 Clone the Repository](#-1-clone-the-repository)
+2. [📦 Install Dependencies](#-2-install-dependencies)
+3. [🎨 Install and Configure Tailwind CSS](#-3-install-and-configure-tailwind-css)
+4. [🗄️ Setup Appwrite (Database Configuration)](#-4-setup-appwrite-database-configuration)
+   - [🔑 Create an Appwrite Account](#-step-1-create-an-appwrite-account)
+   - [📁 Create a New Project](#-step-2-create-a-new-project)
+   - [🛠️ Setup the Database](#-step-3-setup-the-database)
+   - [🏗️ Create Collections](#-step-4-create-collections)
+   - [🔒 Update Collection Permissions](#-step-5-update-collection-permissions)
+   - [🔑 Copy IDs to .env File](#-step-6-copy-ids-to-env-file)
+5. [🚀 Run the Project](#-5-run-the-project)
+6. [🌐 Deploy on Vercel](#-6-deploy-on-vercel)
+   - [🔌 Configure Appwrite Integration](#-configure-appwrite-integration)
+7. [📧 Need Help?](#-need-help)
+8. [🎥 Appwrite Database Guide Video](#-appwrite-database-guide-video)
+9. [📑 Documentation](#-documentation)
+   - [📂 Google Drive](#google-drive)
+   - [📄 DOC PDF](#doc-pdf)
+10. [📊 Database Design](#-database-design)
+11. [🔄 Flowchart](#-flowchart)
+12. [💸 Simplify Debt Flowchart](#-simplify-debt-flowchart)
 
-If you want to work locally using your own code editor, you can clone this repo and push changes. Pushed changes will also be reflected in Rork.
+---
 
-If you are new to coding and unsure which editor to use, we recommend Cursor. If you're familiar with terminals, try Claude Code.
+### 📥 **1. Clone the Repository**
 
-The only requirement is having Node.js & Bun installed - [install Node.js with nvm](https://github.com/nvm-sh/nvm) and [install Bun](https://bun.sh/docs/installation)
-
-Follow these steps:
-
-```bash
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-bun i
-
-# Step 4: Start the instant web preview of your Rork app in your browser, with auto-reloading of your changes
-bun run start-web
-
-# Step 5: Start iOS preview
-# Option A (recommended):
-bun run start  # then press "i" in the terminal to open iOS Simulator
-# Option B (if supported by your environment):
-bun run start -- --ios
-```
-
-### **Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-## What technologies are used for this project?
-
-This project is built with the most popular native mobile cross-platform technical stack:
-
-- **React Native** - Cross-platform native mobile development framework created by Meta and used for Instagram, Airbnb, and lots of top apps in the App Store
-- **Expo** - Extension of React Native + platform used by Discord, Shopify, Coinbase, Telsa, Starlink, Eightsleep, and more
-- **Expo Router** - File-based routing system for React Native with support for web, server functions and SSR
-- **TypeScript** - Type-safe JavaScript
-- **React Query** - Server state management
-- **Lucide React Native** - Beautiful icons
-
-## How can I test my app?
-
-### **On your phone (Recommended)**
-
-1. **iOS**: Download the [Rork app from the App Store](https://apps.apple.com/app/rork) or [Expo Go](https://apps.apple.com/app/expo-go/id982107779)
-2. **Android**: Download the [Expo Go app from Google Play](https://play.google.com/store/apps/details?id=host.exp.exponent)
-3. Run `bun run start` and scan the QR code from your development server
-
-### **In your browser**
-
-Run `bun start-web` to test in a web browser. Note: The browser preview is great for quick testing, but some native features may not be available.
-
-### **iOS Simulator / Android Emulator**
-
-You can test Rork apps in Expo Go or Rork iOS app. You don't need XCode or Android Studio for most features.
-
-**When do you need Custom Development Builds?**
-
-- Native authentication (Face ID, Touch ID, Apple Sign In)
-- In-app purchases and subscriptions
-- Push notifications
-- Custom native modules
-
-Learn more: [Expo Custom Development Builds Guide](https://docs.expo.dev/develop/development-builds/introduction/)
-
-If you have XCode (iOS) or Android Studio installed:
+Begin by cloning the SplitWise repository to your local machine:
 
 ```bash
-# iOS Simulator
-bun run start -- --ios
-
-# Android Emulator
-bun run start -- --android
+git clone https://github.com/PawanSirsat/SplitWise.git
 ```
 
-## How can I deploy this project?
+### 📦 **2. Install Dependencies**
 
-### **Publish to App Store (iOS)**
-
-1. **Install EAS CLI**:
-
-   ```bash
-   bun i -g @expo/eas-cli
-   ```
-
-2. **Configure your project**:
-
-   ```bash
-   eas build:configure
-   ```
-
-3. **Build for iOS**:
-
-   ```bash
-   eas build --platform ios
-   ```
-
-4. **Submit to App Store**:
-   ```bash
-   eas submit --platform ios
-   ```
-
-For detailed instructions, visit [Expo's App Store deployment guide](https://docs.expo.dev/submit/ios/).
-
-### **Publish to Google Play (Android)**
-
-1. **Build for Android**:
-
-   ```bash
-   eas build --platform android
-   ```
-
-2. **Submit to Google Play**:
-   ```bash
-   eas submit --platform android
-   ```
-
-For detailed instructions, visit [Expo's Google Play deployment guide](https://docs.expo.dev/submit/android/).
-
-### **Publish as a Website**
-
-Your React Native app can also run on the web:
-
-1. **Build for web**:
-
-   ```bash
-   eas build --platform web
-   ```
-
-2. **Deploy with EAS Hosting**:
-   ```bash
-   eas hosting:configure
-   eas hosting:deploy
-   ```
-
-Alternative web deployment options:
-
-- **Vercel**: Deploy directly from your GitHub repository
-- **Netlify**: Connect your GitHub repo to Netlify for automatic deployments
-
-## App Features
-
-This template includes:
-
-- **Cross-platform compatibility** - Works on iOS, Android, and Web
-- **File-based routing** with Expo Router
-- **Tab navigation** with customizable tabs
-- **Modal screens** for overlays and dialogs
-- **TypeScript support** for better development experience
-- **Async storage** for local data persistence
-- **Vector icons** with Lucide React Native
-
-## Project Structure
-
-```
-├── app/                    # App screens (Expo Router)
-│   ├── (tabs)/            # Tab navigation screens
-│   │   ├── _layout.tsx    # Tab layout configuration
-│   │   └── index.tsx      # Home tab screen
-│   ├── _layout.tsx        # Root layout
-│   ├── modal.tsx          # Modal screen example
-│   └── +not-found.tsx     # 404 screen
-├── assets/                # Static assets
-│   └── images/           # App icons and images
-├── constants/            # App constants and configuration
-├── app.json             # Expo configuration
-├── package.json         # Dependencies and scripts
-└── tsconfig.json        # TypeScript configuration
-```
-
-## Custom Development Builds
-
-For advanced native features, you'll need to create a Custom Development Build instead of using Expo Go.
-
-### **When do you need a Custom Development Build?**
-
-- **Native Authentication**: Face ID, Touch ID, Apple Sign In, Google Sign In
-- **In-App Purchases**: App Store and Google Play subscriptions
-- **Advanced Native Features**: Third-party SDKs, platform-specifc features (e.g. Widgets on iOS)
-- **Background Processing**: Background tasks, location tracking
-
-### **Creating a Custom Development Build**
+Navigate to the project directory and install the required Node.js packages:
 
 ```bash
-# Install EAS CLI
-bun i -g @expo/eas-cli
-
-# Configure your project for development builds
-eas build:configure
-
-# Create a development build for your device
-eas build --profile development --platform ios
-eas build --profile development --platform android
-
-# Install the development build on your device and start developing
-bun start --dev-client
+cd splitwise
+npm install
 ```
 
-**Learn more:**
+### 🎨 **3. Install and Configure Tailwind CSS**
 
-- [Development Builds Introduction](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Creating Development Builds](https://docs.expo.dev/develop/development-builds/create-a-build/)
-- [Installing Development Builds](https://docs.expo.dev/develop/development-builds/installation/)
+Install Tailwind CSS and initialize it in your project:
 
-## Advanced Features
+```bash
+npm install -D tailwindcss
+npx tailwindcss init
+```
 
-### **Add a Database**
+---
 
-Integrate with backend services:
+### 🗄️ **4. Setup Appwrite (Database Configuration)**
 
-- **Supabase** - PostgreSQL database with real-time features
-- **Firebase** - Google's mobile development platform
-- **Custom API** - Connect to your own backend
+#### 🚀 **Quick Option: Import My Database Setup (Migration)**
 
-### **Add Authentication**
+**Skip the manual steps below and directly migrate my database configuration and data!**
 
-Implement user authentication:
+1. Create a new project in Appwrite.
+2. Go to **Settings** → **Migrations** → **Import Project Data**.
+3. Use the following required details:
+   - **Endpoint**
+   - **Project ID**
+   - **API Key**
 
-**Basic Authentication (works in Expo Go):**
+**I can provide these details to you. Just email me at [p1.sirsat1998@gmail.com](mailto:p1.sirsat1998@gmail.com), and I’ll share them with you!**
 
-- **Expo AuthSession** - OAuth providers (Google, Facebook, Apple) - [Guide](https://docs.expo.dev/guides/authentication/)
-- **Supabase Auth** - Email/password and social login - [Integration Guide](https://supabase.com/docs/guides/getting-started/tutorials/with-expo-react-native)
-- **Firebase Auth** - Comprehensive authentication solution - [Setup Guide](https://docs.expo.dev/guides/using-firebase/)
+This automated process ensures you avoid errors and get started instantly.
 
-**Native Authentication (requires Custom Development Build):**
+---
 
-- **Apple Sign In** - Native Apple authentication - [Implementation Guide](https://docs.expo.dev/versions/latest/sdk/apple-authentication/)
-- **Google Sign In** - Native Google authentication - [Setup Guide](https://docs.expo.dev/guides/google-authentication/)
+#### 🛠️ **Manual Option: Create the Database Yourself**
 
-### **Add Push Notifications**
+If you prefer to set up the database manually, follow these steps:
 
-Send notifications to your users:
+#### 🔑 **Step 1: Create an Appwrite Account**
 
-- **Expo Notifications** - Cross-platform push notifications
-- **Firebase Cloud Messaging** - Advanced notification features
+- Sign up for an Appwrite account at [Appwrite](https://appwrite.io).
 
-### **Add Payments**
+#### 📁 **Step 2: Create a New Project**
 
-Monetize your app:
+- In the Appwrite dashboard, create a new project (e.g., **Splitwise**).
 
-**Web & Credit Card Payments (works in Expo Go):**
+#### 🛠️ **Step 3: Setup the Database**
 
-- **Stripe** - Credit card payments and subscriptions - [Expo + Stripe Guide](https://docs.expo.dev/guides/using-stripe/)
-- **PayPal** - PayPal payments integration - [Setup Guide](https://developer.paypal.com/docs/checkout/mobile/react-native/)
+- Go to the **Databases** section and create a new database (e.g., **Expense**).
 
-**Native In-App Purchases (requires Custom Development Build):**
+#### 🏗️ **Step 4: Create Collections**
 
-- **RevenueCat** - Cross-platform in-app purchases and subscriptions - [Expo Integration Guide](https://www.revenuecat.com/docs/expo)
-- **Expo In-App Purchases** - Direct App Store/Google Play integration - [Implementation Guide](https://docs.expo.dev/versions/latest/sdk/in-app-purchases/)
+- Create the following collections and there attributes within your database:
 
-**Paywall Optimization:**
+⚠️ **Warning**: Ensure that you use the attribute names and related collections exactly as mentioned below. To avoid errors, **copy and paste the names directly** where applicable.
 
-- **Superwall** - Paywall A/B testing and optimization - [React Native SDK](https://docs.superwall.com/docs/react-native)
-- **Adapty** - Mobile subscription analytics and paywalls - [Expo Integration](https://docs.adapty.io/docs/expo)
+1. **Users**
 
-## I want to use a custom domain - is that possible?
+   - **UserName**: `string` (Default: `-`)
+   - **name**: `string` (Default: `-`)
+   - **email**: `email` (Default: `-`)
+   - **accountId**: `string` (Default: `-`)
 
-For web deployments, you can use custom domains with:
+2. **Groups**
 
-- **EAS Hosting** - Custom domains available on paid plans
-- **Netlify** - Free custom domain support
-- **Vercel** - Custom domains with automatic SSL
+   - **groupName**: `string` (Default: `-`)
+   - **Creator**: `Relationship` (Two-way Relationship with `Users`; `Many to one`,
+     Attribute Key (related collection): `groups`, Cascade on delete)
+   - **Members**: `Relationship` (Two-way Relationship with **Users**; `Many to Many`,
+     Attribute Key (related collection): `UserMember`, Set Null on delete)
 
-For mobile apps, you'll configure your app's deep linking scheme in `app.json`.
+3. **Friends**
 
-## Troubleshooting
+   - **friendsId**: `Relationship` (Two-way Relationship with **Users**; `Many to many`,
+     Attribute Key (related collection): `friendCollection`, Set Null on delete)
+   - **CollectionId**: `Relationship` (Two-way Relationship with **Users**; `Many to one`,
+     Attribute Key (related collection): `List`, Set Null on delete)
 
-### **App not loading on device?**
+4. **Activity**
 
-1. Make sure your phone and computer are on the same WiFi network
-2. Try using tunnel mode: `bun start -- --tunnel`
-3. Check if your firewall is blocking the connection
+   - **Desc**: `string` (Default: `-`)
+   - **Time**: `DateTime` (Default: `-`)
+   - **Amout**: `string` (Default: `-`) _Note: If you change this spelling (Amout), update it in the React app._
+   - **IsSettled**: `boolean` (Default: `false`)
+   - **splitMember**: `Relationship` (Two-way Relationship with **Users**; `Many to many`,
+     Attribute Key (related collection): `members`, Set Null on delete)
+   - **PaidBy**: `Relationship` (Two-way Relationship with **Users**; `Many to one`,
+     Attribute Key (related collection): `activity`, Set Null on delete)
+   - **Group**: `Relationship` (Two-way Relationship with **Groups**; `Many to one`,
+     Attribute Key (related collection): `activity`, Cascade on delete)
 
-### **Build failing?**
+5. **Transaction**
+   - **Amount**: `string` (Default: `-`)
+   - **Time**: `DateTime` (Default: `-`)
+   - **IsOld**: `boolean` (Default: `false`)
+   - **payerId**: `Relationship` (Two-way Relationship with **Users**; `Many to one`,
+     Attribute Key (related collection): `transaction`, Set Null on delete)
+   - **receiverId**: `Relationship` (Two-way Relationship with **Users**; `Many to one`,
+     Attribute Key (related collection): `transactionId`, Set Null on delete)
 
-1. Clear your cache: `bunx expo start --clear`
-2. Delete `node_modules` and reinstall: `rm -rf node_modules && bun install`
-3. Check [Expo's troubleshooting guide](https://docs.expo.dev/troubleshooting/build-errors/)
+#### 🔒 **Step 5: Update Collection Permissions**
 
-### **Need help with native features?**
+1. **Navigate to Collection Settings**:
 
-- Check [Expo's documentation](https://docs.expo.dev/) for native APIs
-- Browse [React Native's documentation](https://reactnative.dev/docs/getting-started) for core components
-- Visit [Rork's FAQ](https://rork.com/faq) for platform-specific questions
+   - In your **Appwrite** dashboard, open the **Collection Settings** for each collection that requires permission changes.
 
-## About Rork
+2. **Modify Permissions**:
 
-Rork builds fully native mobile apps using React Native and Expo - the same technology stack used by Discord, Shopify, Coinbase, Instagram, and nearly 30% of the top 100 apps on the App Store.
+   - For each collection, go to the **Settings** tab.
+   - Under the **Permissions** section, update the role to `Any`.
+   - Ensure that the following permissions are checked:
+     - **Create**
+     - **Read**
+     - **Update**
+     - **Delete**
 
-Your Rork app is production-ready and can be published to both the App Store and Google Play Store. You can also export your app to run on the web, making it truly cross-platform.
+3. **Save Changes**:
+   - Repeat the process for each collection, ensuring the correct permissions are applied.
+
+---
+
+#### 🔑 **Step 6: Copy IDs to .env File**
+
+1. In **Project Settings**, copy the **Project ID** and **API Endpoint**.
+2. Copy the **Database ID** and all **Collection IDs** from the database.
+3. Create a `.env.local` file and add the copied IDs as follows:
+4. Now no need of `.env.sample`
+
+#### **Sample .env.local File**
+
+```bash
+VITE_APPWRITE_URL='https://cloud.appwrite.io/v1'
+VITE_APPWRITE_PROJECT_ID='67c067565211fbcf173'
+VITE_APPWRITE_DATABASE_ID='657c0953b37f27853d8'
+VITE_APPWRITE_USER_COLLECTION_ID='657casd56db7f49cee3b20'
+VITE_APPWRITE_GROUPS_COLLECTION_ID='657c09839424664asd87496'
+VITE_APPWRITE_ACTIVITY_COLLECTION_ID='657c099dd2eda1ddebb'
+VITE_APPWRITE_FRIENDS_COLLECTION_ID='681b28b356casds5dd28d'
+VITE_APPWRITE_TRANSACTION_COLLECTION_ID='65aasd54f3a07aec3c8'
+```
+
+---
+
+### 🚀 **5. Run the Project**
+
+Finally, start the development server:
+
+```bash
+npm run dev
+```
+
+---
+
+### 🌐 **6. Deploy on Vercel**
+
+1. **Deploy on Vercel**:
+
+   - Go to [Vercel](https://vercel.com/) and sign in or sign up.
+   - Connect your **GitHub** account and select the Git repository of the project you want to deploy.
+   - Follow the prompts to deploy your project. Vercel will handle the deployment and provide you with a live URL once completed.
+   - Add .env.local in Vercel Spliwise Project Go in Settings Environment Variables And Paste Your all  .env.local in that
+
+2. **Configure Appwrite Integration**:
+   - After deployment, copy the Vercel deployment URL (e.g., `https://your-project-name.vercel.app`).
+   - Log in to your **Appwrite** dashboard.
+   - Go to your **Project Overview** and scroll down to the **Integrations** section.
+   - Click **Add Platform** and select `Web App`.
+   - In the `Name` field, paste your Vercel deployment URL, and in the `Hostname` field, enter `*.vercel.app`.
+3. **Complete Setup**:
+   - Skip any additional configurations unless required by your project setup.
+   - Your app is now deployed and integrated with Appwrite! 🎉
+
+---
+
+### 📧 **Need Help?**
+
+If you encounter any issues with the database or need further assistance, feel free to email me at: p1.sirsat1998@gmail.com.
+
+---
+
+### 🎥 **Appwrite Database Guide Video**
+
+https://github.com/user-attachments/assets/a09c0edf-5d71-4417-b03d-39db91105be6
+
+---
+
+### 📑 **Documentation**
+
+#### 📂 **Google Drive**
+
+[Google Drive Complete Application DOC](https://drive.google.com/drive/folders/1nG6kY0vprGZ4sazl2pUZ6ee1TMno9BVI?usp=drive_link)
+
+#### 📄 **DOC PDF**
+
+[splitwise_documentation.pdf](https://github.com/user-attachments/files/16871474/splitwise_documentation.pdf)
+
+---
+
+### 📊 **Database Design**
+
+![DataBase Design 1](https://github.com/user-attachments/assets/26d84039-10e9-4d9b-b04d-442017fbcb80)
+
+---
+
+### 🔄 **Flowchart**
+
+![FlowChart](https://github.com/user-attachments/assets/6add1f3d-8f64-43e9-8c78-cedcd18032d4)
+
+---
+
+### 💸 **Simplify Debt Flowchart**
+
+![Simplify Debt Flow](https://github.com/user-attachments/assets/9114c101-d851-48d5-a7ab-15f1b1b69f5c)
+
+---
+
+# Login
+
+![Screenshot (463)](https://github.com/PawanSirsat/SplitWise/assets/48860105/6feaf149-4f67-474b-ac5b-a61f6eacbb63)
+
+# Signup
+
+![Screenshot (464)](https://github.com/PawanSirsat/SplitWise/assets/48860105/71c31b5f-beee-4a61-87ff-3398fdd6e98f)
+
+# Home
+
+![Screenshot (457)](https://github.com/PawanSirsat/SplitWise/assets/48860105/b09536d8-43a5-402d-8590-7b6c4edbfd59)
+
+# All Activity
+
+![Screenshot (458)](https://github.com/PawanSirsat/SplitWise/assets/48860105/63a37885-204b-4d6c-b1e1-6d2f09b3dcd8)
+
+# Group Activity
+
+![Screenshot (460)](https://github.com/PawanSirsat/SplitWise/assets/48860105/ae8b0631-8a98-49d1-96cb-9810a0673586)
+
+# Profile
+
+![Screenshot (459)](https://github.com/PawanSirsat/SplitWise/assets/48860105/8f6f3be7-7883-483b-9e23-05aaf8fcc29f)
+
+### Built With
+
+React - A JavaScript library for building user interfaces.
+React Router - Declarative routing for React.js.
+Tailwind CSS - A utility-first CSS framework.
+
+# React + TypeScript + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+
+- Configure the top-level `parserOptions` property like this:
+
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: ["./tsconfig.json", "./tsconfig.node.json"],
+    tsconfigRootDir: __dirname,
+  },
+};
+```
+
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
