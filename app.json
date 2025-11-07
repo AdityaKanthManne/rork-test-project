@@ -23,7 +23,10 @@
         "foregroundImage": "./public/assets/images/logo.svg",
         "backgroundColor": "#000000"
       },
-      "package": "com.splitwise.app"
+      "package": "com.splitwise.app",
+      "permissions": [
+        "android.permission.VIBRATE"
+      ]
     },
     "web": {
       "favicon": "./public/assets/images/favicon.ico",
