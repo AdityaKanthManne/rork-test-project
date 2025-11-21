@@ -1,7 +1,8 @@
-import { useNavigate } from "react-router-dom";
-import { createContext, useContext, useEffect, useState } from "react";
-import { IUser } from "@/types";
-import { getCurrentUser } from "@/lib/appwrite/api";
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { useRouter, useSegments } from 'expo-router';
+import { getCurrentUser } from '@/lib/appwrite/api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { IUser } from '@/types';
 
 export const INITIAL_USER = {
   id: "",
@@ -12,13 +13,13 @@ export const INITIAL_USER = {
   list: "",
 };
 
-const INITIAL_STATE = {
+const INITIAL_STATE: IContextType = {
   user: INITIAL_USER,
   isLoading: false,
   isAuthenticated: false,
   setUser: () => {},
   setIsAuthenticated: () => {},
-  checkAuthUser: async () => false as boolean,
+  checkAuthUser: async () => false,
 };
 
 type IContextType = {
@@ -33,10 +34,11 @@ type IContextType = {
 const AuthContext = createContext<IContextType>(INITIAL_STATE);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const navigate = useNavigate();
   const [user, setUser] = useState<IUser>(INITIAL_USER);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
+  const segments = useSegments();
 
   const checkAuthUser = async () => {
     setIsLoading(true);
@@ -57,7 +59,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       return false;
     } catch (error) {
-      console.error(error);
+      console.error('Auth check error:', error);
       return false;
     } finally {
       setIsLoading(false);
@@ -65,17 +67,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    const cookieFallback = localStorage.getItem("cookieFallback");
-    if (
-      cookieFallback === "[]" ||
-      cookieFallback === null ||
-      cookieFallback === undefined
-    ) {
-      navigate("/sign-in");
-    }
+    const initAuth = async () => {
+      const cookieFallback = await AsyncStorage.getItem('cookieFallback');
+      if (!cookieFallback || cookieFallback === '[]') {
+        setIsLoading(false);
+        return;
+      }
+      await checkAuthUser();
+    };
 
-    checkAuthUser();
+    initAuth();
   }, []);
+
+  useEffect(() => {
+    if (isLoading) return;
+
+    const inAuthGroup = segments[0] === '(auth)';
+
+    if (!isAuthenticated && !inAuthGroup) {
+      router.replace('/(auth)/sign-in');
+    } else if (isAuthenticated && inAuthGroup) {
+      router.replace('/(tabs)/home');
+    }
+  }, [isAuthenticated, segments, isLoading, router]);
 
   const value = {
     user,
