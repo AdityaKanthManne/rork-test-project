@@ -13,8 +13,8 @@ import {
 } from 'react-native';
 import { Link, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { createUserAccount, signInAccount } from '@/lib/appwrite/api';
-import { useUserContext } from '@/context/AuthContext';
+import { createUserAccount, signInAccount } from '../../lib/appwrite/api';
+import { useUserContext } from '../../context/AuthContext';
 
 export default function SignUp() {
   const router = useRouter();

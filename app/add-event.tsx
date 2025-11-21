@@ -10,7 +10,7 @@ import {
   Platform,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useCalendar } from "@/context/CalendarContext";
+import { useCalendar } from "./context/CalendarContext";
 import { useRouter } from "expo-router";
 import { format } from "date-fns";
 import { Calendar, Clock, MapPin, Bell } from "lucide-react-native";

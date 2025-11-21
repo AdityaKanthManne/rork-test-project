@@ -2,8 +2,8 @@ import { View, Text, FlatList, TouchableOpacity, ActivityIndicator } from 'react
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { UserPlus } from 'lucide-react-native';
-import { useUserContext } from '@/context/AuthContext';
-import { useFriends } from '@/lib/react-query/queries';
+import { useUserContext } from '../../context/AuthContext';
+import { useFriends } from '../../lib/react-query/queries';
 
 export default function Friends() {
   const router = useRouter();

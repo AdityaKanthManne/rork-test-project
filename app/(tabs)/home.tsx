@@ -2,7 +2,7 @@ import { View, Text, FlatList, TouchableOpacity, ActivityIndicator, Image } from
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { Plus } from 'lucide-react-native';
-import { useGetCurrentUser } from '@/lib/react-query/queries';
+import { useGetCurrentUser } from '../../lib/react-query/queries';
 
 export default function Groups() {
   const router = useRouter();

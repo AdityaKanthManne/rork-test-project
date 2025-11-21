@@ -11,7 +11,7 @@ import {
   Platform,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useCalendar, CalendarEvent } from "@/context/CalendarContext";
+import { useCalendar, CalendarEvent } from "../context/CalendarContext";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import { format } from "date-fns";
 import { Calendar, Clock, MapPin, Bell, Trash2, Edit3, Check } from "lucide-react-native";

@@ -1,8 +1,7 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter, useSegments } from 'expo-router';
-import { getCurrentUser } from '@/lib/appwrite/api';
+import { getCurrentUser } from '../lib/appwrite/api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React from "react";
 
 export const INITIAL_USER = {
   id: '',
@@ -97,7 +96,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } else if (isAuthenticated && inAuthGroup) {
       router.replace('/(tabs)/home');
     }
-  }, [isAuthenticated, segments, isLoading]);
+  }, [isAuthenticated, segments, isLoading, router]);
 
   const value = {
     user,

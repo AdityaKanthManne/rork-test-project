@@ -2,8 +2,8 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'rea
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { LogOut, User as UserIcon, Mail } from 'lucide-react-native';
-import { useUserContext } from '@/context/AuthContext';
-import { signOutAccount } from '@/lib/appwrite/api';
+import { useUserContext } from '../../context/AuthContext';
+import { signOutAccount } from '../../lib/appwrite/api';
 
 export default function Profile() {
   const router = useRouter();

@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Dimensions, Animated, Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useCalendar } from "@/context/CalendarContext";
+import { useCalendar } from "./context/CalendarContext";
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, isToday, addMonths, subMonths, startOfWeek, endOfWeek } from "date-fns";
 import { ChevronLeft, ChevronRight, Plus } from "lucide-react-native";
 import { useRouter } from "expo-router";

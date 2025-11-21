@@ -11,8 +11,8 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { ArrowLeft } from 'lucide-react-native';
-import { useCreateGroup } from '@/lib/react-query/queries';
-import { useUserContext } from '@/context/AuthContext';
+import { useCreateGroup } from '../lib/react-query/queries';
+import { useUserContext } from '../context/AuthContext';
 
 export default function CreateGroup() {
   const router = useRouter();

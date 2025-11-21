@@ -24,7 +24,7 @@ import {
   INewGroup,
   INewUser,
   ISettlement,
-} from '@/lib/appwrite/api';
+} from '../appwrite/api';
 
 export const useCreateUserAccount = () => {
   return useMutation({

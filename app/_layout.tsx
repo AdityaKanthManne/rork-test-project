@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { CalendarProvider } from "@/context/CalendarContext";
+import { CalendarProvider } from "./context/CalendarContext";
 
 export default function RootLayout() {
   return (

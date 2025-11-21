@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useActivity } from '@/lib/react-query/queries';
+import { useActivity } from '../../lib/react-query/queries';
 import { format } from 'date-fns';
 
 export default function Activity() {
